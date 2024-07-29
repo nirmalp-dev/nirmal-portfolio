@@ -3,8 +3,8 @@
 .gradle
 **/build/
 xcuserdata
-!src/**/build/
 local.properties
+!src/**/build/
 .idea
 .DS_Store
 captures
