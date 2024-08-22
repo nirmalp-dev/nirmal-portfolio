@@ -1,5 +1,6 @@
 package ui.theme
 
+import androidx.compose.material.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily
 import portfolio.composeapp.generated.resources.Res
