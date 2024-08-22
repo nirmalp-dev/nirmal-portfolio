@@ -12,6 +12,8 @@ import org.jetbrains.compose.resources.painterResource
 
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.compose_multiplatform
+import ui.theme.PreahvihearFontFamily
+
 
 @Composable
 fun App() {
@@ -25,7 +27,7 @@ fun App() {
                 val greeting = remember { Greeting().greet() }
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                     Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+                    Text("Compose: $greeting", fontFamily = PreahvihearFontFamily())
                 }
             }
         }
