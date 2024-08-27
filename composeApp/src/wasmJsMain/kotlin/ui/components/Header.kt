@@ -10,13 +10,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
-import portfolio.composeapp.generated.resources.Logo
 import portfolio.composeapp.generated.resources.Res
+import portfolio.composeapp.generated.resources.headshot
+import portfolio.composeapp.generated.resources.logo
 
 @Composable
 fun Header(){
@@ -28,6 +31,11 @@ fun Header(){
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        Image(
+            painter =  painterResource(Res.drawable.logo),
+            contentDescription = null
+        )
+
         HeaderText(
             text = "Home",
         )
