@@ -4,6 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
@@ -36,6 +37,21 @@ import ui.theme.PreahvihearFontFamily
 @Composable
 fun Headline() {
     Column {
+        Row{
+            Text(
+                text = "Hello!, I am ",
+                fontFamily = PreahvihearFontFamily(),
+                color = Color.White,
+                fontSize = 19.sp,
+            )
+            Text(
+                text = "Nirmal Patel",
+                fontFamily = PreahvihearFontFamily(),
+                color = Color(0xFF7127BA),
+                fontSize = 19.sp,
+            )
+        }
+        Spacer(modifier = Modifier.size(50.dp))
         Text(
             text = "A Developer who",
             fontFamily = PreahvihearFontFamily(),

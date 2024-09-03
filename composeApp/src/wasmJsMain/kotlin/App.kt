@@ -5,13 +5,13 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,17 +25,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.Resource
 import org.jetbrains.compose.resources.painterResource
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.bookmark_icon
@@ -60,61 +57,68 @@ fun App() {
         ) {
             item {
                 Header()
+//                Text(
+//                    text = "Hello, This is Nirmal Patel",
+//                    fontFamily = PreahvihearFontFamily(),
+//                    color = Color.White,
+//                    fontSize = MaterialTheme.typography.h3.fontSize
+//                )
                 Row(
+                    modifier = Modifier.fillMaxWidth(0.8f),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Box(){
-                        //TODO: Add Gradient
-                        Canvas(modifier = Modifier){
-                            drawRadialGradient()
-                        }
-                        Image(
-//                            modifier = Modifier.drawBehind {
-//                                drawRadialGradient()
-////                            drawOval(
-////                                brush = Brush.radialGradient(
-////                                    0.0f to Color(0xFF763CAC),
-////                                    0.5f to Color(0xFF542598).copy(alpha = 0.5f),
-////                                    1f to Color(0xFF320F85).copy(alpha = 0f),
-////                                ),
-//////                                size = Size(this.size.width*100f,this.size.height*4f),
-////                                style = Stroke(width = 10f)
-////                            )
-//                            },
-                            alignment = Alignment.Center,
-                            painter = painterResource(Res.drawable.headshot),
-                            contentDescription = "headshot",
-                        )
-                    }
+                    GlowingHeadshot()
 
                     Headline()
 
                 }
-                Text(
-                    text = "Hello, This is Nirmal Patel",
-                    fontFamily = PreahvihearFontFamily(),
-                    color = Color.White,
-                    fontSize = MaterialTheme.typography.h3.fontSize
-                )
 
-                Ellipse()
-                Card(
-                    painterResource = Res.drawable.bookmark_icon,
-                )
+//              // TODO next section
+//                Ellipse()
+//                Card(
+//                    painterResource = Res.drawable.bookmark_icon,
+//                )
             }
         }
     }
 }
-fun DrawScope.drawRadialGradient() {
-    drawRect(
-        brush = Brush.radialGradient(
-            colors = listOf(Color.Blue, Color.Transparent),
-            center = center,
-            radius = size.maxDimension
+@Composable
+private fun GlowingHeadshot() {
+    Box {
+        //TODO: Add Gradient
+        Box(
+            contentAlignment = Alignment.Center
+        ) {
+            Canvas(
+                modifier = Modifier
+                    .width(385.dp)
+                    .height(431.dp)
+            ) {
+                drawOval(
+                    brush = Brush.radialGradient(
+                        0.0f to Color(0xFF763CAC),
+                        0.5f to Color(0xFF542598).copy(alpha = 0.5f),
+                        1.0f to Color(0xFF320F85).copy(alpha = 0f),
+                    ),
+                    size = Size(this.size.width, this.size.height)
+                )
+            }
+            // TODO fix white gradient
+
+        }
+        Image(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .width(165.dp)
+                .height(223.dp),
+            alignment = Alignment.Center,
+            painter = painterResource(Res.drawable.headshot),
+            contentDescription = "headshot",
         )
-    )
+    }
 }
+
 @Composable
 private fun Card(
     painterResource: DrawableResource,
