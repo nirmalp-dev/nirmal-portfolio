@@ -47,7 +47,7 @@ import ui.theme.PreahvihearFontFamily
 fun App() {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFF11071F)
@@ -55,31 +55,30 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
-            item {
-                Header()
+            Header()
 //                Text(
 //                    text = "Hello, This is Nirmal Patel",
 //                    fontFamily = PreahvihearFontFamily(),
 //                    color = Color.White,
 //                    fontSize = MaterialTheme.typography.h3.fontSize
 //                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(0.8f),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    GlowingHeadshot()
+            Row(
+                modifier = Modifier.fillMaxWidth(0.6f),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                GlowingHeadshot()
 
-                    Headline()
+                Headline()
 
-                }
+            }
 
 //              // TODO next section
 //                Ellipse()
 //                Card(
 //                    painterResource = Res.drawable.bookmark_icon,
 //                )
-            }
+
         }
     }
 }
@@ -92,8 +91,9 @@ private fun GlowingHeadshot() {
         ) {
             Canvas(
                 modifier = Modifier
-                    .width(385.dp)
-                    .height(431.dp)
+                    .fillMaxSize(0.5f)
+//                    .width(385.dp)
+//                    .height(431.dp)
             ) {
                 drawOval(
                     brush = Brush.radialGradient(
@@ -110,8 +110,10 @@ private fun GlowingHeadshot() {
         Image(
             modifier = Modifier
                 .align(Alignment.Center)
-                .width(165.dp)
-                .height(223.dp),
+                .fillMaxSize(0.25f)
+//                .width(165.dp)
+//                .height(223.dp)
+                    ,
             alignment = Alignment.Center,
             painter = painterResource(Res.drawable.headshot),
             contentDescription = "headshot",
